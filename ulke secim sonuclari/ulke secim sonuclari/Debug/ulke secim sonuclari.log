@@ -1,0 +1,17 @@
+﻿  ulke secim sonuclari.cpp
+C:\Users\Mehmet ESTİ\Source\Repos\ulke secim sonuclari\ulke secim sonuclari\ulke secim sonuclari.cpp(39,15): warning C4244: 'başlatılıyor': 'T' - 'int' dönüşümü; veri kaybı olabilir
+          with
+          [
+              T=float
+          ]
+C:\Users\Mehmet ESTİ\Source\Repos\ulke secim sonuclari\ulke secim sonuclari\ulke secim sonuclari.cpp(70): message : derlenen şablon işlevi 'int enBuyuk<float>(T *)' örneği oluşturma başvurusuna bakın
+          with
+          [
+              T=float
+          ]
+C:\Users\Mehmet ESTİ\Source\Repos\ulke secim sonuclari\ulke secim sonuclari\ulke secim sonuclari.cpp(45,27): warning C4244: '=': 'T' - 'int' dönüşümü; veri kaybı olabilir
+          with
+          [
+              T=float
+          ]
+  ulke secim sonuclari.vcxproj -> C:\Users\Mehmet ESTİ\Source\Repos\ulke secim sonuclari\Debug\ulke secim sonuclari.exe
