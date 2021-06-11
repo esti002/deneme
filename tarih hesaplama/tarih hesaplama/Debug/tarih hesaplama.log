@@ -1,0 +1,4 @@
+﻿  tarih hesaplama.cpp
+C:\Users\Mehmet ESTİ\Source\Repos\tarih hesaplama\tarih hesaplama\tarih hesaplama.cpp(193,13): warning C4101: 'year2': yerel değişken başvurusu kaldırıldı
+C:\Users\Mehmet ESTİ\Source\Repos\tarih hesaplama\tarih hesaplama\tarih hesaplama.cpp(53): warning C4715: 'daysOfMonth': tüm denetim yolları değer döndürmez
+  tarih hesaplama.vcxproj -> C:\Users\Mehmet ESTİ\Source\Repos\tarih hesaplama\Debug\tarih hesaplama.exe
