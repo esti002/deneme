@@ -1,0 +1,6 @@
+﻿  karakter islemci 2.cpp
+C:\Users\Mehmet ESTİ\Source\Repos\karakter islemci 2\karakter islemci 2\karakter islemci 2.cpp(75,27): warning C4267: '+=': 'size_t' - 'int' dönüşümü; veri kaybı olabilir
+C:\Users\Mehmet ESTİ\Source\Repos\karakter islemci 2\karakter islemci 2\karakter islemci 2.cpp(134,30): warning C4267: '+=': 'size_t' - 'int' dönüşümü; veri kaybı olabilir
+C:\Users\Mehmet ESTİ\Source\Repos\karakter islemci 2\karakter islemci 2\karakter islemci 2.cpp(137,26): warning C4267: '+=': 'size_t' - 'int' dönüşümü; veri kaybı olabilir
+C:\Users\Mehmet ESTİ\Source\Repos\karakter islemci 2\karakter islemci 2\karakter islemci 2.cpp(203,38): warning C4267: '+=': 'size_t' - 'int' dönüşümü; veri kaybı olabilir
+  karakter islemci 2.vcxproj -> C:\Users\Mehmet ESTİ\Source\Repos\karakter islemci 2\x64\Debug\karakter islemci 2.exe
