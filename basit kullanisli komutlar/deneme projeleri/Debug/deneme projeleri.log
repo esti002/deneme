@@ -1,0 +1,8 @@
+﻿  deneme projeleri.cpp
+C:\Users\Mehmet ESTİ\Source\Repos\deneme projeleri\deneme projeleri\deneme projeleri.cpp(23,6): error C2086: 'int j': yeniden tanımlama
+C:\Users\Mehmet ESTİ\Source\Repos\deneme projeleri\deneme projeleri\deneme projeleri.cpp(10): message : 'j' bildirimine bakın
+C:\Users\Mehmet ESTİ\Source\Repos\deneme projeleri\deneme projeleri\deneme projeleri.cpp(24,6): error C2086: 'int i': yeniden tanımlama
+C:\Users\Mehmet ESTİ\Source\Repos\deneme projeleri\deneme projeleri\deneme projeleri.cpp(10): message : 'i' bildirimine bakın
+C:\Users\Mehmet ESTİ\Source\Repos\deneme projeleri\deneme projeleri\deneme projeleri.cpp(226,28): warning C4244: '=': 'float' - 'int' dönüşümü; veri kaybı olabilir
+C:\Users\Mehmet ESTİ\Source\Repos\deneme projeleri\deneme projeleri\deneme projeleri.cpp(231,28): warning C4244: '=': 'float' - 'int' dönüşümü; veri kaybı olabilir
+C:\Users\Mehmet ESTİ\Source\Repos\deneme projeleri\deneme projeleri\deneme projeleri.cpp(236,27): warning C4244: '=': 'float' - 'int' dönüşümü; veri kaybı olabilir
