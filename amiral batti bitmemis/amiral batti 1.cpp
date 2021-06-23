@@ -26,29 +26,96 @@ using namespace std;
 // kullanici tarafindan girileceginden kac gemi varsa o gemi uzunluk degerlerini kullanicidan isteyip gerekmedigi surece gemi uzunluk degeleri sifir olacak boylece de ext hata 
 // vermez 
 
-int findLocation(int axisX,int axisY)
+int findLocation(int axisX, int axisY)
 {
 	return axisY * 12 + axisX;
 }
 
-void shipControl(int axisX,int axisY)
+void shipControl(int axisX, int axisY,int *warArea,int* sinkedShip)
 {
-	while (axisX + 1 < 12 && findLocation(axisX + 1, axisY) != 1)
+	bool isSink = true;
+	int loopVariable = axisX;
+	int maxShipAmount[10] = {-1};
+	int shipNumber = 1;
+	maxShipAmount[0] = findLocation(axisX, axisY);
+	if (warArea[findLocation(axisX, axisY)] == 1|| warArea[findLocation(axisX, axisY)] == 2)
 	{
-		if(findLocation(axisX + 1, axisY) != 2)
+		while (loopVariable + 1 < 12 && warArea[findLocation(loopVariable + 1, axisY)] !=0)
 		{
-			break;
+			if (warArea[findLocation(loopVariable + 1, axisY)] == 1)
+			{
+				isSink = false;
+			}
+			if (warArea[findLocation(loopVariable + 1, axisY)] == 2)
+			{
+				maxShipAmount[shipNumber] = findLocation(loopVariable + 1, axisY);
+				shipNumber++;
+			}
+			loopVariable++;
+		}
+		if (isSink == true) {
+			int loopVariable = axisX;
+			while (loopVariable - 1 < 12 && warArea[findLocation(loopVariable - 1, axisY)] != 0)
+
+			{
+				if (warArea[findLocation(loopVariable - 1, axisY)] == 1)
+				{
+					isSink = false;
+				}
+				if (warArea[findLocation(loopVariable - 1, axisY)] == 2)
+				{
+					maxShipAmount[shipNumber] = findLocation(loopVariable - 1, axisY);
+					shipNumber++;
+				}
+				loopVariable--;
+			}
+		}
+		if (isSink == true) {
+			int loopVariable = axisY;
+			while (loopVariable + 1 < 12 && warArea[findLocation(axisX, loopVariable + 1)] != 0)
+			{
+				if (warArea[findLocation(axisX, loopVariable + 1)] == 1)
+				{
+					isSink = false;
+				}
+				if (warArea[findLocation(axisX, loopVariable + 1)] == 2)
+				{
+					maxShipAmount[shipNumber] = findLocation(axisX, loopVariable + 1);
+					shipNumber++;
+				}
+				loopVariable++;
+			}
+		}
+		if (isSink == true) {
+			int loopVariable = axisY;
+			while (loopVariable - 1 < 12 && warArea[findLocation(axisX, loopVariable - 1)] != 0)
+
+			{
+				if (warArea[findLocation(axisX, loopVariable - 1)] == 1)
+				{
+					isSink = false;
+				}
+				if (warArea[findLocation(axisX, loopVariable - 1)] == 2)
+				{
+					maxShipAmount[shipNumber] = findLocation(axisX, loopVariable - 1);
+					shipNumber++;
+				}
+				loopVariable--;
+			}
+		}
+
+		if (isSink == true)
+		{
+			for (int i = 0; maxShipAmount[i] > 0; i++)
+			{
+				warArea[maxShipAmount[i]] = 4;
+			}
+			*sinkedShip = *sinkedShip + 1;
 		}
 	}
-
-	while (axisX + -1 > -1 && findLocation(axisX -1, axisY) != 1) {}
-
-	while (axisY + 1 < 12 && findLocation(axisX, axisY + 1) != 1) {}
-
-	while (axisY + 1 < 12 && findLocation(axisX, axisY + 1) != 1) {}
 }
 
-void placament(int* warArea, int* shipLong, int* shipNumber)
+void placement(int* warArea, int* shipLong, int* shipNumber)
 {
 	int axisX = 0;
 	int axisY = 0;
@@ -63,11 +130,11 @@ void placament(int* warArea, int* shipLong, int* shipNumber)
 	{
 		isVertical = true; //dikey
 	}
-	if (shipLong[*shipNumber] != 0) 
+	if (shipLong[*shipNumber] != 0)
 	{
 
 		bool isEmpty = true;
-		if (isVertical == false )
+		if (isVertical == false)
 		{
 			if (axisX + shipLong[*shipNumber] < 12)
 			{
@@ -75,16 +142,16 @@ void placament(int* warArea, int* shipLong, int* shipNumber)
 				{
 					if (axisX + shipLong[*shipNumber] + 1 < 12)
 					{
-						for (int i = axisX - 1; i < axisX+ shipLong[*shipNumber]; i++)
+						for (int i = axisX - 1; i < axisX + shipLong[*shipNumber]; i++)
 						{
 							if (warArea[findLocation(i, axisY)] != 0)
 							{
 								isEmpty = false;
 							}
 						}
-						for(int i = axisX - 1; i < axisX + shipLong[*shipNumber]; i++)
+						for (int i = axisX - 1; i < axisX + shipLong[*shipNumber]; i++)
 						{
-							if (warArea[findLocation(i, axisY+1)] != 0)
+							if (warArea[findLocation(i, axisY + 1)] != 0)
 							{
 								isEmpty = false;
 							}
@@ -100,7 +167,7 @@ void placament(int* warArea, int* shipLong, int* shipNumber)
 					}
 					else
 					{
-						for (int i = axisX - 1; i < axisX + shipLong[*shipNumber]-1; i++)
+						for (int i = axisX - 1; i < axisX + shipLong[*shipNumber] - 1; i++)
 						{
 							if (warArea[findLocation(i, axisY)] != 0)
 							{
@@ -109,7 +176,7 @@ void placament(int* warArea, int* shipLong, int* shipNumber)
 						}
 						if (axisY + 1 < 12)
 						{
-							for (int i = axisX - 1; i < axisX + shipLong[*shipNumber]-1; i++)
+							for (int i = axisX - 1; i < axisX + shipLong[*shipNumber] - 1; i++)
 							{
 								if (warArea[findLocation(i, axisY + 1)] != 0)
 								{
@@ -119,7 +186,7 @@ void placament(int* warArea, int* shipLong, int* shipNumber)
 						}
 						if (axisY > 0)
 						{
-							for (int i = axisX - 1; i < axisX + shipLong[*shipNumber]-1; i++)
+							for (int i = axisX - 1; i < axisX + shipLong[*shipNumber] - 1; i++)
 							{
 								if (warArea[findLocation(i, axisY - 1)] != 0)
 								{
@@ -158,21 +225,21 @@ void placament(int* warArea, int* shipLong, int* shipNumber)
 					}
 					else
 					{
-						for (int i = axisX; i < axisX + shipLong[*shipNumber]-1; i++)
+						for (int i = axisX; i < axisX + shipLong[*shipNumber] - 1; i++)
 						{
 							if (warArea[findLocation(i, axisY)] != 0)
 							{
 								isEmpty = false;
 							}
 						}
-						for (int i = axisX; i < axisX + shipLong[*shipNumber]-1; i++)
+						for (int i = axisX; i < axisX + shipLong[*shipNumber] - 1; i++)
 						{
 							if (warArea[findLocation(i, axisY + 1)] != 0)
 							{
 								isEmpty = false;
 							}
 						}
-						for (int i = axisX; i < axisX + shipLong[*shipNumber]-1; i++)
+						for (int i = axisX; i < axisX + shipLong[*shipNumber] - 1; i++)
 						{
 							if (warArea[findLocation(i, axisY - 1)] != 0)
 							{
@@ -204,16 +271,16 @@ void placament(int* warArea, int* shipLong, int* shipNumber)
 									isEmpty = false;
 								}
 							}
-							for (int i = axisY-1; i < axisY + shipLong[*shipNumber]; i++)
+							for (int i = axisY - 1; i < axisY + shipLong[*shipNumber]; i++)
 							{
-								if (warArea[findLocation(axisX+1, i)] != 0)
+								if (warArea[findLocation(axisX + 1, i)] != 0)
 								{
 									isEmpty = false;
 								}
 							}
-							for (int i = axisY-1; i < axisY + shipLong[*shipNumber]; i++)
+							for (int i = axisY - 1; i < axisY + shipLong[*shipNumber]; i++)
 							{
-								if (warArea[findLocation(axisX-1, i)] != 0)
+								if (warArea[findLocation(axisX - 1, i)] != 0)
 								{
 									isEmpty = false;
 								}
@@ -221,23 +288,23 @@ void placament(int* warArea, int* shipLong, int* shipNumber)
 						}
 						else
 						{
-							for (int i = axisY - 1; i < axisY + shipLong[*shipNumber]-1; i++)
+							for (int i = axisY - 1; i < axisY + shipLong[*shipNumber] - 1; i++)
 							{
 								if (warArea[findLocation(axisX, i)] != 0)
 								{
 									isEmpty = false;
 								}
 							}
-							for (int i = axisY - 1; i < axisY + shipLong[*shipNumber]-1; i++)
+							for (int i = axisY - 1; i < axisY + shipLong[*shipNumber] - 1; i++)
 							{
-								if (warArea[findLocation(axisX+1, i)] != 0)
+								if (warArea[findLocation(axisX + 1, i)] != 0)
 								{
 									isEmpty = false;
 								}
 							}
-							for (int i = axisY - 1; i < axisY + shipLong[*shipNumber]-1; i++)
+							for (int i = axisY - 1; i < axisY + shipLong[*shipNumber] - 1; i++)
 							{
-								if (warArea[findLocation(axisX-1, i)] != 0)
+								if (warArea[findLocation(axisX - 1, i)] != 0)
 								{
 									isEmpty = false;
 								}
@@ -327,82 +394,82 @@ void placament(int* warArea, int* shipLong, int* shipNumber)
 		}
 		else
 		{
-			placament(warArea, shipLong, shipNumber);
+			placement(warArea, shipLong, shipNumber);
 		}
 	}
 	else
 	{
-	placament(warArea, shipLong, shipNumber);
+		placement(warArea, shipLong, shipNumber);
 	}
 
 }
 
 
 
-void shot(int axisX,int axisY, int *warArea,int shotDue)
+void shot(int axisX, int *axisY, int* warArea, int* shotDue)
 {
 	int shotLocation = 0;
-	shotLocation = warArea[findLocation(axisX, axisY)];
+	shotLocation = warArea[findLocation(axisX, *axisY)];
 	switch (shotLocation)
 	{
 	case 0:
-		cout << "Uzgunum, Karavana"<<endl;
-		warArea[findLocation(axisX, axisY)] = 3;
+		cout << "Uzgunum, Karavana" << endl;
+		warArea[findLocation(axisX, *axisY)] = 3;
 		break;
 	case 1:
 		cout << "Tebrikler, tam isabet." << endl;
-		warArea[findLocation(axisX, axisY)] = 2;
+		warArea[findLocation(axisX, *axisY)] = 2;
 		break;
 	case 2:
+	case 3:
+	case 4:
 		cout << "Buraya zaten daha once atis yapmissin." << endl;
 		break;
 	}
-	shotDue++;
+	*shotDue = *shotDue-1;
 
 }
-void shotArea(char koorY, int axisX, int* warArea, int shotDue)
+void shotArea(char koorY, int axisX, int* warArea, int* shotDue,int* axisY)
 {
-	int axisY = -1;
 	switch (koorY)
 	{
 	case 'A':
-		axisY = 0;
+		*axisY = 0;
 		break;
 	case 'B':
-		axisY = 1;
+		*axisY = 1;
 		break;
 	case 'C':
-		axisY = 2;
+		*axisY = 2;
 		break;
 	case 'D':
-		axisY = 3;
+		*axisY = 3;
 		break;
 	case 'E':
-		axisY = 4;
+		*axisY = 4;
 		break;
 	case 'F':
-		axisY = 5;
+		*axisY = 5;
 		break;
 	case 'G':
-		axisY = 6;
+		*axisY = 6;
 		break;
 	case 'H':
-		axisY = 7;
+		*axisY = 7;
 		break;
 	case 'I':
-		axisY = 8;
+		*axisY = 8;
 		break;
 	case 'J':
-		axisY = 9;
+		*axisY = 9;
 		break;
 	case 'K':
-		axisY = 10;
+		*axisY = 10;
 		break;
 	case 'L':
-		axisY = 11;
+		*axisY = 11;
 		break;
 	}
-
 	shot(axisX, axisY, warArea, shotDue);
 
 }
@@ -416,7 +483,9 @@ int main()
 	int shotDue = 0;
 	char koorY = ' ';
 	int axisX = -1;
-	char YKoors[12] = { 'A','B','C','D','E','F','G','H','I','J','K','L'};
+	int axisY = -1;
+	int sinkedShip = 0;
+	char YKoors[12] = { 'A','B','C','D','E','F','G','H','I','J','K','L' };
 
 	srand(time(0));
 
@@ -431,13 +500,13 @@ int main()
 		shotDue += shipLong[i];
 	}
 	shotDue *= 2;//toplam atis hakki toplam gemi uzunlugunun iki katidir.
-	
+
 	for (int i = 0; i < shipAmount; i++)
 	{
-		placament(warArea, shipLong, &shipNumber);
+		placement(warArea, shipLong, &shipNumber);
 	}
 
-	for(int i =0;i<shotDue;i++)
+	for (int i = 0; i < shotDue; i++)
 	{
 		cout << "* 0 1 2 3 4 5 6 7 8 9 1 2" << endl;
 		for (int j = 0; j < 12; j++)
@@ -463,11 +532,45 @@ int main()
 			}
 			cout << endl;
 		}
-		cout << "Atis yapmak istediginiz koordinatlari belirleyiniz." << endl << "YATAK KOORDINATLAR ICIN 0-11 ARASINDA DEGER GIRINIZ." << endl;
-		cin >> axisX;
-		cout << "DIKEY KOORDINATLAR ICIN A-L ARASINDA DEGER GIRINIZ." << endl;
-		cin >> koorY;
-		shotArea(koorY,axisX,warArea,shotDue);
+		cout << "Kalan atis hakkiniz : " << shotDue<<endl;
+		cout << "Toplam batirilan gemi sayisi : (" << sinkedShip << "/" << shipAmount << ")" << endl << endl;
+
+
+		bool isFair = false;
+		while (isFair == false)
+		{
+			
+			cout << "Atis yapmak istediginiz koordinatlari belirleyiniz." << endl << "YATAY KOORDINATLAR ICIN 0-11 ARASINDA DEGER GIRINIZ." << endl;
+			cout << "DIKEY KOORDINATLAR ICIN BUYUK HARFLERLE A-L ARASINDA DEGER GIRINIZ." << endl<<endl;
+			cin >> axisX;
+			cin >> koorY;
+			if(axisX>-1&&axisX<12)
+			{
+				for(int i=0;i<12;i++)
+				{
+					if (koorY == YKoors[i]) 
+					{ 
+						isFair = true; 
+					}
+					else
+					{
+						if (i == 11&&isFair==false)
+						{
+							cout << "!!!!!   GIRDIGINIZ KOORDINATLAR OYUN ALANINI ICERMEMEKTEDIR   !!!!!!" << endl;
+							cout << "LUTFEN GIRDIGINIZ DIKEY KOORDINATLARI KONTROL EDINIZ." << endl<<endl;
+						}
+					}
+				}
+			}
+			else
+			{
+				cout << "!!!!!   GIRDIGINIZ KOORDINATLAR OYUN ALANINI ICERMEMEKTEDIR   !!!!!!" << endl;
+				cout << "LUTFEN GIRDIGINIZ YATAY KOORDINATLARI KONTROL EDINIZ." << endl<<endl;
+			}
+		}
+		shotArea(koorY, axisX, warArea, &shotDue,&axisY);
+		shipControl(axisX, axisY, warArea, &sinkedShip);
+														
 
 	}
 
