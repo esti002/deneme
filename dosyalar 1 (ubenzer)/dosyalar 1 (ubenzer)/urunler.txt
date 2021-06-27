@@ -1,0 +1,11 @@
+10 konakcingenesi 5 10.00
+25 televizyon 1000 152.50
+40 video 999 25.00
+50 plazma 75 2300.50
+76 dvd 19000 90.00
+85 supurge 0 115.25
+90 buzluk 750 10.00
+95 teyp 1250 8.99
+
+
+
