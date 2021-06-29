@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{d33bea3c-af1a-467f-9f64-e42e621fe683}</ProjectGuid>
-    <RootNamespace>deneme2</RootNamespace>
+    <ProjectGuid>{df21cda1-7090-4f18-aa12-9be2ac530714}</ProjectGuid>
+    <RootNamespace>dosyalar1</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -139,7 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="deneme 2.cpp" />
+    <ClCompile Include="dosyalar 1.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
