@@ -1,1 +1,8 @@
 
+
+>>DOSYALAMA<<
+file.seekg(x); ==> dosya icindeki imleci xkonumuna tasir.
+
+file.clear(); ===> bu komut daha once file dosyasi ile yapilanlari temizler yani daha onceden "file.eof()" yapilmis ise daha sonrasinda seekg(x) fonkisyonu gibi 
+                   fonksiyonlarin tekrardan calismasini saglar.
+
