@@ -185,6 +185,29 @@ void priceManager(fstream &file)
 	rename("tempFile.txt","urunler.txt");
 }
 
+void updateStock(fstream &file)
+{
+	int t_id = 0;
+	string t_name;
+	int t_stockA = 0;
+	int t_price = 0;
+	int lineNO = 0;
+
+	cout << "Stok miktarina ekleme yapacaginiz urunun urun numarasini giriniz." << endl;
+	cin >> t_id;
+
+	file.clear();
+	file.seekg(0);
+
+	lineNO = compareId(file,&t_id);
+
+	while(!file.eof())
+	{
+		
+	}
+
+}
+
 void productManager()
 {
 	int id = 0;
