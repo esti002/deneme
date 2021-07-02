@@ -121,7 +121,7 @@ void updatePrice(fstream& file)
 
 	cout << "Fiyatini degistirmek istediginiz urunun urun numarasini giriniz." << endl;
 	cin >> t_id;
-	fstream tempFile("tempFile.txt", std::ios::in | ios::out | ios::app);
+	fstream tempPrice("tempPrice.txt", std::ios::in | ios::out | ios::app);
 	if (compareId(file, &t_id) != 0)
 	{
 	file.clear();
@@ -142,7 +142,7 @@ void updatePrice(fstream& file)
 					cin >> n_price;
 
 					file >> t_id >> t_name >> t_stockA >> temp_price;
-					tempFile << t_id << " " << t_name << " " << t_stockA << " " << n_price << endl;
+					tempPrice << t_id << " " << t_name << " " << t_stockA << " " << n_price << endl;
 				}
 				else
 				{
@@ -161,7 +161,7 @@ void updatePrice(fstream& file)
 					if (!file.eof())
 					{
 						file >> n_price;
-						tempFile << tmp_id << " " << t_name << " " << t_stockA << " " << n_price << endl;
+						tempPrice << tmp_id << " " << t_name << " " << t_stockA << " " << n_price << endl;
 					}
 					
 				}
@@ -182,16 +182,19 @@ void priceManager(fstream &file)
 	updatePrice(file);
 	file.close();
 	remove("urunler.txt");
-	rename("tempFile.txt","urunler.txt");
+	rename("tempPrice.txt","urunler.txt");
 }
 
 void updateStock(fstream &file)
 {
 	int t_id = 0;
+	int tmp_id = 0;
 	string t_name;
 	int t_stockA = 0;
-	int t_price = 0;
+	float t_price = 0;
 	int lineNO = 0;
+
+	fstream tempStock("tempStock.txt",std::ios::in|ios::out|ios::app);
 
 	cout << "Stok miktarina ekleme yapacaginiz urunun urun numarasini giriniz." << endl;
 	cin >> t_id;
@@ -200,12 +203,73 @@ void updateStock(fstream &file)
 	file.seekg(0);
 
 	lineNO = compareId(file,&t_id);
-
-	while(!file.eof())
+	file.clear();
+	file.seekg(0);
+	
+	if (lineNO > 0)
 	{
-		
+		int addStock;
+		cout << t_id << " urun numarali urunun stok miktarina yapmak istediginiz stok miktarini giriniz." << endl;
+		cin >> addStock;
+		int t_lineNo = 1;
+		while (!file.eof())
+		{
+			bool isOK = true;
+			if(!file.eof()&& isOK ==true)
+			{
+				file >> tmp_id;
+			}
+			else 
+			{
+				isOK = false;
+			}
+			if (!file.eof() && isOK == true)
+			{
+				file >> t_name;
+			}
+			else
+			{
+				isOK = false;
+			}
+			if (!file.eof() && isOK == true)
+			{
+				file >> t_stockA;
+			}
+			else
+			{
+				isOK = false;
+			}
+			if (!file.eof() && isOK == true)
+			{
+				file >> t_price;
+			}
+			else
+			{
+				isOK = false;
+			}
+			if(t_lineNo==lineNO && isOK == true)
+			{
+				tempStock << t_id << " " << t_name << " " << t_stockA + addStock << " " << t_price << endl;
+			}
+			if (t_lineNo != lineNO && isOK == true)
+			{
+				tempStock << tmp_id << " " << t_name << " " << t_stockA << " " << t_price << endl;
+			}
+			t_lineNo++;
+		}
 	}
-
+	else
+	{
+		cout << endl <<"Girmis oldugunuz urun numarasina ait bir urun bulunamadi." << endl;
+		updateStock(file);
+	}
+}
+void stockManager(fstream &file)
+{
+	updateStock(file);
+	file.close();
+	remove("urunler.txt");
+	rename("tempStock.txt", "urunler.txt");
 }
 
 void productManager()
@@ -241,7 +305,7 @@ void productManager()
 		priceManager(condition);
 		break;
 	case 3:
-
+		stockManager(condition);
 		break;
 	case 4:
 
