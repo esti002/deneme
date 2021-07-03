@@ -272,6 +272,71 @@ void stockManager(fstream &file)
 	rename("tempStock.txt", "urunler.txt");
 }
 
+void removeProduct(fstream &file)
+{
+	int t_id = 0;
+	string t_name;
+	int t_stockA = 0;
+	float t_price = 0;
+	int lineNO = 0;
+
+	file.clear();
+	file.seekg(0);
+	cout << "Tum bilgilerini silmek istediginiz urunun urun numarasini giriniz." << endl;
+	cin >> t_id;
+	lineNO = compareId(file, &t_id);
+	file.clear();
+	file.seekg(0);
+
+	fstream tempRemove("tempRemove.txt", std::ios::in | ios::out | ios::app);
+
+	if(lineNO>0)
+	{
+		int t_lineNo = 1;
+		bool isOK = true;
+		while (!file.eof())
+		{
+			file >> t_id;
+			if(!file.eof())
+			{
+				file >> t_name;
+			}
+
+			else { isOK = false; }
+			if (!file.eof())
+			{
+				file >> t_stockA;
+			}
+			else { isOK = false; }
+			if (!file.eof())
+			{
+				file >> t_price;
+			}
+			else { isOK = false; }
+			if(lineNO!=t_lineNo&&isOK==true)
+			{
+				tempRemove << t_id << " " << t_name << " " << t_stockA << " " << t_price << endl;
+			}
+
+			t_lineNo++;
+		}
+	}
+	else
+	{
+		cout << "Girmis oldugunuz urun numarasi ile kayitli bir urun bulunamadi." << endl;
+		removeProduct(file);
+	}
+
+}
+
+void removeManager(fstream &file)
+{
+	removeProduct(file);
+	file.close();
+	remove("urunler.txt");
+	rename("tempRemove.txt", "urunler.txt");
+}
+
 void productManager()
 {
 	int id = 0;
@@ -311,7 +376,7 @@ void productManager()
 
 		break;
 	case 5:
-
+		removeManager(condition);
 		break;
 	case 6:
 
