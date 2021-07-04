@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include <cstdlib>
+#include <iomanip>
 
 using namespace std;
 
@@ -466,12 +467,220 @@ void sellProcess(fstream &productFile,fstream &saleFile)
 	cout << "Satislar kaydedildi." << endl << endl;
 }
 
+void showInfos(fstream& productFile, fstream& saleFile, bool allProducts ,bool id = 0, bool name = 0, bool stockA = 0, bool price = 0, bool date = 0, bool sellA=0)
+{
+	int lineNO = 0;
+	int idNO = 0;
+	int tmp_id = 0;
+	string t_name;
+	float t_price = 0;
+	int t_stockA = 0;
+	if (allProducts == false)
+	{
+		cout << "Ekrana urun ve satis bilgilerinin gelmesini istediginiz urunun urun numarasini giriniz." << endl;
+		cin >> idNO;
+	}
+	lineNO = compareId(productFile, &idNO);
+	productFile.clear();
+	productFile.seekp(0);
+
+	bool showProducts = false;
+	bool showSales = false;
+	if(id != 0 ||name != 0 ||stockA != 0 ||price != 0 )
+	{
+		showProducts = true;
+	}
+	if(date != 0 || sellA != 0 )
+	{
+		showSales = true;
+	}
+	cout << setw(20) << left;
+	if(showProducts==true)
+	{
+		if(id != 0)
+		{
+			cout << setw(20) << "URUN KODU";
+		}
+		if (name != 0)
+		{
+			cout << setw(20) << "URUN ADI";
+		}
+		if (price != 0)
+		{
+			cout << setw(20) << "URUN FIYATI";
+		}
+		if (id != 0)
+		{
+			cout << setw(20) <<"URUN STOK MIKTARI";
+		}
+		cout << endl;
+		int t_lineNo = 1;
+		while(!productFile.eof())
+		{
+			bool isOK = true;
+			if (!productFile.eof() && isOK == true)
+			{
+				productFile >> tmp_id;
+			}
+			else
+			{
+				isOK = false;
+			}
+			if (!productFile.eof() && isOK == true)
+			{
+				productFile >> t_name;
+			}
+			else
+			{
+				isOK = false;
+			}
+			if (!productFile.eof() && isOK == true)
+			{
+				productFile >> t_stockA;
+			}
+			else
+			{
+				isOK = false;
+			}
+			if (!productFile.eof() && isOK == true)
+			{
+				productFile >> t_price;
+			}
+			else
+			{
+				isOK = false;
+			}
+			if (t_lineNo == lineNO && isOK == true && allProducts == false)
+			{
+				if (id != 0)
+				{
+					cout << setw(20) << tmp_id ;
+				}
+				if (name != 0)
+				{
+					cout << setw(20) << t_name ;
+				}
+				if (price != 0)
+				{
+					cout << setw(20) << t_price ;
+				}
+				if (id != 0)
+				{
+					cout << setw(20) << t_stockA ;
+				}
+				cout << endl << endl;
+			}
+			if(allProducts==true && isOK == true)
+			{
+				if (id != 0)
+				{
+					cout << setw(20) << tmp_id ;
+				}
+				if (name != 0)
+				{
+					cout << setw(20) << t_name ;
+				}
+				if (price != 0)
+				{
+					cout << setw(20) << t_price ;
+				}
+				if (id != 0)
+				{
+					cout << setw(20) << t_stockA ;
+				}
+				cout << endl << endl;
+			}
+			t_lineNo++;
+		}
+	}
+
+	if(showSales==true)
+	{
+		int t_date = 0;
+		int t_sellA = 0;
+		int t_lineNO = 0;
+		t_lineNO = compareId(saleFile, &idNO);
+		if(allProducts==true)
+		{
+			t_lineNO = 1;
+		}
+		saleFile.clear();
+		saleFile.seekg(0);
+		if(t_lineNO==0)
+		{
+			cout << idNO << " urun numarali urunun hicbir satis kaydi bulunmamaktadir." << endl<<endl;
+		}
+		if (date != 0)
+		{
+			cout << setw(20) << "SATIS TARIHI";
+		}
+		if (sellA != 0)
+		{
+			cout << setw(20) << "SATIS MIKTARI";
+		}
+		cout << endl;
+		if(t_lineNO>0 )
+		{
+			while(!saleFile.eof())
+			{
+				bool isOK = true;
+				if (!saleFile.eof() && isOK == true)
+				{
+					saleFile >> tmp_id;
+				}
+				else
+				{
+					isOK = false;
+				}
+				if (!saleFile.eof() && isOK == true)
+				{
+					saleFile >> t_date;
+				}
+				else
+				{
+					isOK = false;
+				}
+				if (!saleFile.eof() && isOK == true)
+				{
+					saleFile >> t_sellA;
+				}
+				else
+				{
+					isOK = false;
+				}
+				if(!saleFile.eof() && tmp_id==idNO&&allProducts==false&&isOK==true)
+				{
+
+					if (date != 0)
+					{
+						cout << setw(20) << t_date;
+					}
+					if (sellA != 0)
+					{
+						cout << setw(20) << t_sellA;
+					}
+					cout << endl;
+				}
+				if (allProducts == true && isOK == true)
+				{
+					if (date != 0)
+					{
+						cout << setw(20) << t_date;
+					}
+					if (sellA != 0)
+					{
+						cout << setw(20) << t_sellA;
+					}
+					cout << endl;
+				}
+
+			}
+		}
+	}
+}
+
 void productManager()
 {
-	int id = 0;
-	char name[21];
-	int stockAmount = 0;
-	int price = 0;
 	int projectInput = 0;
 
 	cout << "Yapmak istediginiz islem numarasini giriniz." << endl;
@@ -508,13 +717,13 @@ void productManager()
 		removeManager(condition);
 		break;
 	case 6:
-
+		showInfos(condition, sales,0, 1, 1, 1, 1, 1, 1);
 		break;
 	case 7:
-
+		showInfos(condition, sales, 0, 1, 1, 1, 1);
 		break;
 	case 8:
-
+		showInfos(condition, sales, 1, 1, 1, 1, 1, 1, 1);
 		break;
 	case 9:
 
