@@ -3,8 +3,9 @@
 #include <string>
 #include <cstdlib>
 
-
 using namespace std;
+
+void productManager();
 
 void readFile(fstream& file, int* id, char name[21], int* stockAmount, float* price)
 {
@@ -13,23 +14,6 @@ void readFile(fstream& file, int* id, char name[21], int* stockAmount, float* pr
 	file >> *stockAmount;
 	file >> *price;
 }
-
-/*bool compareId(fstream& file, int* id = 0)
-{
-	string satir;
-	int temp1 = 0;
-	while (!file.eof())
-	{
-		file >> temp1;
-		file >> satir;
-		if (*id == temp1)
-		{
-			return true;
-		}
-	}
-	return false;
-}*/
-
 int compareId(fstream& file, int* id)
 {
 	int t_id = 0;
@@ -50,6 +34,7 @@ int compareId(fstream& file, int* id)
 	}
 	return 0;
 }
+
 int compareId(fstream& file, int* id, int* t_id)
 {
 	*t_id = 0;
@@ -264,6 +249,7 @@ void updateStock(fstream &file)
 		updateStock(file);
 	}
 }
+
 void stockManager(fstream &file)
 {
 	updateStock(file);
@@ -337,6 +323,149 @@ void removeManager(fstream &file)
 	rename("tempRemove.txt", "urunler.txt");
 }
 
+void updateStock2(fstream &file,int *t_id,int changeAmount,int t_stockA)
+{
+	int tmp_id = 0;
+	string t_name;
+	float t_price = 0;
+	int lineNO = 0;
+
+	fstream tempStock("tempstock.txt", std::ios::in | ios::out | ios::app);
+
+	file.clear();
+	file.seekg(0);
+	lineNO = compareId(file, t_id);
+	file.clear();
+	file.seekg(0);
+
+	if(lineNO>0)
+	{
+		int t_lineNo = 1;
+		while(!file.eof())
+		{
+			bool isOK = true;
+			if (!file.eof() && isOK == true)
+			{
+				file >> tmp_id;
+			}
+			else
+			{
+				isOK = false;
+			}
+			if (!file.eof() && isOK == true)
+			{
+				file >> t_name;
+			}
+			else
+			{
+				isOK = false;
+			}
+			if (!file.eof() && isOK == true)
+			{
+				file >> t_stockA;
+			}
+			else
+			{
+				isOK = false;
+			}
+			if (!file.eof() && isOK == true)
+			{
+				file >> t_price;
+			}
+			else
+			{
+				isOK = false;
+			}
+			if (t_lineNo == lineNO && isOK == true)
+			{
+				if (t_stockA < changeAmount)
+				{
+					cout << "Bu kadar urun yok yani bu kadar satis yapmaniz imkansiz." << endl << endl;
+					tempStock.close();
+					productManager();
+				}
+				tempStock << *t_id << " " << t_name << " " << t_stockA + changeAmount*-1 << " " << t_price << endl;
+			}
+			if (t_lineNo != lineNO && isOK == true)
+			{
+				tempStock << tmp_id << " " << t_name << " " << t_stockA << " " << t_price << endl;
+			}
+			t_lineNo++;
+		}
+	}
+	tempStock.close();
+}
+
+void sellProcess(fstream &productFile,fstream &saleFile) 
+{
+	int sale_id = 0;
+	int date_day = 0, date_month = 0, date_year = 0;
+	int saleAmount = 0;
+	int stockA = 0;
+	productFile.clear();
+	productFile.seekg(0);
+	bool isOK = true;
+	while (isOK == true)
+	{
+		cout << "Satisi yapilan urunun urun numarasini giriniz." << endl;
+		cin >> sale_id;
+		if(compareId(productFile,&sale_id)==0)
+		{
+			cout << "Girmis oldugunuz urun numarasi urunler arasinda bulunmamaktadir." << endl;
+			isOK = true;
+		}
+		else
+		{
+			isOK = false;
+		}
+		productFile.clear();
+		productFile.seekg(0);
+	}
+	isOK = true;
+	while (isOK == true)
+	{
+		cout << "Satis tarihini sirayla GUN AY YIL seklinde giriniz." << endl;
+		cin >> date_day >> date_month >> date_year;
+		if(date_day<1||date_day>31||date_month<1||date_month>12||date_year<0||date_year>99)
+		{
+			cout << "Girmis oldugunuz tarih gecersiz." << endl;
+			isOK = true;
+		}
+		else
+		{
+			isOK = false;
+		}
+	}
+	isOK = true;
+	productFile.clear();
+	productFile.seekg(0);
+	while (isOK == true)
+	{
+		cout << "Yapilan satis miktarini giriniz." << endl;
+		cin >> saleAmount;
+		if(saleAmount <= 0)
+		{
+			cout << saleAmount << " tane urun satmaniz mumkun degil." << endl;
+			isOK = true;
+		}
+		else
+		{
+			isOK = false;
+		}
+	}
+	productFile.clear();
+	productFile.seekg(0);
+
+	updateStock2(productFile, &sale_id, saleAmount, stockA);
+	productFile.close();
+	remove("urunler.txt");
+	rename("tempStock.txt","urunler.txt");
+
+	saleFile.app;
+	saleFile << sale_id << " " << date_day << date_month << date_year << " " << saleAmount << endl;
+	cout << "Satislar kaydedildi." << endl << endl;
+}
+
 void productManager()
 {
 	int id = 0;
@@ -349,7 +478,7 @@ void productManager()
 	cout << "1) Yeni bir urunun eklenmesi " << endl;
 	cout << "2) Bir urunun fiyatinin guncellenmesi " << endl;
 	cout << "3) Stoka urun girisi yapilmasi" << endl;
-	cout << "4) Yapılan satislarin sisteme girilmesi " << endl;
+	cout << "4) Yapilan satislarin sisteme girilmesi " << endl;
 	cout << "5) Bir urunun silinmesi " << endl;
 	cout << "6) Bir urunun bilgilerinin ve satis kayitlarinin listelenmesi " << endl;
 	cout << "7) Bir urunun bilgilerinin listelenmesi " << endl;
@@ -360,7 +489,7 @@ void productManager()
 	cin >> projectInput;
 
 	fstream condition("urunler.txt", std::ios::in | ios::out); //urun bilgilerini tutan dosya "condition durum kosul sart falan demek" 
-	fstream sales("satislar.dat", std::ios::in | ios::out | ios::app);//yapilan satislarin tutuldugu dosya
+	fstream sales("satislar.txt", std::ios::in | ios::out | ios::app); //yapilan satislarin tutuldugu dosya
 	switch (projectInput)
 	{
 	case 1:
@@ -373,7 +502,7 @@ void productManager()
 		stockManager(condition);
 		break;
 	case 4:
-
+		sellProcess(condition, sales);
 		break;
 	case 5:
 		removeManager(condition);
