@@ -1,4 +1,4 @@
-10 konakcingenesi 2 10
+10 konakcingenesi 2 10.00
 25 televizyon 995 152.5
 40 video 999 25
 50 plazma 75 2300.5

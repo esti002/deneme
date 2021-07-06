@@ -679,6 +679,72 @@ void showInfos(fstream& productFile, fstream& saleFile, bool allProducts ,bool i
 	}
 }
 
+void stockLessX(fstream &file)
+{
+	int productsAmount[100] = { 0 };
+	int t_id = 0;
+	string t_name;
+	int t_stockA = 0;
+	float t_price = 0;
+	int minStock = 0;
+
+	cout << "Gosterilmesini istediginiz stok miktarinin en yuksek seviyesini giriniz." << endl;
+	cin >> minStock;
+	bool isOK = true;
+
+	cout << setw(20) << left;
+	for(int i =0;i<100;i++)
+	{	
+		if (!file.eof() && isOK == true)
+		{
+			file >> t_id;
+		}
+		else
+		{
+			isOK = false;
+		}
+		if (!file.eof() && isOK == true)
+		{
+			file >> t_name;
+		}
+		else
+		{
+			isOK = false;
+		}
+		if (!file.eof() && isOK == true)
+		{
+			file >> t_stockA;
+		}
+		else
+		{
+			isOK = false;
+		}
+		if (!file.eof() && isOK == true)
+		{
+			file >> t_price;
+		}
+		else
+		{
+			isOK = false;
+		}
+		if(minStock>t_stockA&&isOK==true)
+		{
+			cout << setw(20) << "URUN KODU" << setw(20) << "URUN ADI" << setw(20) << "STOK MIKTARI" << endl;
+			cout << setw(20) << t_id << setw(20) << t_name << setw(20) << t_stockA << endl;
+
+		}
+		if(isOK==false)
+		{
+			break;
+		}
+	}
+}
+
+void giroManager(fstream &productsFile, fstream &salesFile)
+{
+	
+}
+
 void productManager()
 {
 	int projectInput = 0;
@@ -726,7 +792,7 @@ void productManager()
 		showInfos(condition, sales, 1, 1, 1, 1, 1, 1, 1);
 		break;
 	case 9:
-
+		stockLessX(condition);
 		break;
 	case 10:
 
