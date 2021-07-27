@@ -15,6 +15,7 @@ TARIH HESAPLAMA =>  https://ubenzer.com/wp-content/uploads/2007/11/proje-1.pdf
 
 ULKE SECIM SONUCLARI =>  https://ubenzer.com/wp-content/uploads/2007/12/algo-odev-3.pdf
 
+SUPER MARKET SIMULASYONU => https://ubenzer.com/wp-content/uploads/2008/04/odev2.pdf
 
 YAZILAN KODLAR .cpp UZANTILI DOSYALARIN ICERISINDEDIR...
 
