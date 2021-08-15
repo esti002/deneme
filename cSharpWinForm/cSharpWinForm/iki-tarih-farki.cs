@@ -85,8 +85,11 @@ namespace cSharpWinForm
 			}
 
 			//kagitta yazan kisim1
-			totalDay = checker.daysOfMonth(lowYear, lowMonth) - lowDay;
-			lowMonth++;
+			if (lowMonth != bigMonth && lowYear != bigYear)
+			{
+				totalDay = checker.daysOfMonth(lowYear, lowMonth) - lowDay;
+				lowMonth++;
+			}
 			if (bigYear > lowYear)
 			{
 				for (; lowMonth < 13; lowMonth++)
@@ -116,8 +119,14 @@ namespace cSharpWinForm
 				totalDay += checker.daysOfMonth(lowYear, lowMonth);
 				lowMonth++;
 			}
-
-			totalDay += bigDay;
+			if (totalDay > 0)
+			{
+				totalDay += bigDay;
+			}
+            else 
+			{
+				totalDay = bigDay - lowDay;
+			}
 			result = totalDay;
 
 			//kagitta not aldigim birinci-ikinci-ucuncu kisimlari sirasiyla aktar.

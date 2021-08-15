@@ -18,3 +18,4 @@ C:\Users\Mehmet ESTİ\Source\Repos\cSharpWinForm\cSharpWinForm\obj\Debug\netcore
 C:\Users\Mehmet ESTİ\Source\Repos\cSharpWinForm\cSharpWinForm\obj\Debug\netcoreapp3.1\cSharpWinForm.dateProcess.resources
 C:\Users\Mehmet ESTİ\Source\Repos\cSharpWinForm\cSharpWinForm\obj\Debug\netcoreapp3.1\cSharpWinForm.aboutPage.resources
 C:\Users\Mehmet ESTİ\Source\Repos\cSharpWinForm\cSharpWinForm\obj\Debug\netcoreapp3.1\cSharpWinForm.csproj.AssemblyReference.cache
+C:\Users\Mehmet ESTİ\Source\Repos\cSharpWinForm\cSharpWinForm\obj\Debug\netcoreapp3.1\cSharpWinForm.shopRegistration.resources

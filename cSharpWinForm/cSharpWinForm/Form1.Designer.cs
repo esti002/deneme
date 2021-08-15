@@ -31,6 +31,7 @@ namespace cSharpWinForm
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.aboutButton = new System.Windows.Forms.Button();
             this.closeButton = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -45,6 +46,7 @@ namespace cSharpWinForm
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.aboutButton);
             this.panel1.Controls.Add(this.closeButton);
             this.panel1.Controls.Add(this.button3);
@@ -54,6 +56,20 @@ namespace cSharpWinForm
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(70, 700);
             this.panel1.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Image = global::cSharpWinForm.Properties.Resources.market;
+            this.button1.Location = new System.Drawing.Point(0, 140);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(70, 70);
+            this.button1.TabIndex = 5;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // aboutButton
             // 
@@ -180,6 +196,7 @@ namespace cSharpWinForm
         private homePage homePage2;
         private System.Windows.Forms.Button aboutButton;
         private aboutPage aboutPage1;
+        private System.Windows.Forms.Button button1;
     }
 }
 

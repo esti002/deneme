@@ -1,0 +1,2 @@
+C:\Users\Mehmet ESTİ\Documents\GitHub\deneme\COMBO\COMBO\Debug\COMBO.MyForm.resources
+C:\Users\Mehmet ESTİ\Documents\GitHub\deneme\COMBO\COMBO\Debug\COMBO.vcxproj.GenerateResource.cache

@@ -133,6 +133,16 @@ namespace cSharpWinForm.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
+        internal static System.Drawing.Bitmap market {
+            get {
+                object obj = ResourceManager.GetObject("market", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
         internal static System.Drawing.Bitmap messageBox {
             get {
                 object obj = ResourceManager.GetObject("messageBox", resourceCulture);
@@ -176,6 +186,16 @@ namespace cSharpWinForm.Properties {
         internal static System.Drawing.Bitmap okYellow {
             get {
                 object obj = ResourceManager.GetObject("okYellow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap orange_1100x700 {
+            get {
+                object obj = ResourceManager.GetObject("orange 1100x700", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

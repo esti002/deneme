@@ -18,6 +18,7 @@ namespace cSharpWinForm
 			if (backDay > day)
 			{
 				backDay -= day;
+				newDay = 0;
 				newMonth--;
 			}
 			if (newMonth < 1)
@@ -42,6 +43,10 @@ namespace cSharpWinForm
 			}
             else 
 			{
+                if (newDay == 0) 
+				{
+					newDay = checker.daysOfMonth(newYear, newMonth);
+				}
 				newDay -= backDay;
 			}
 			if (newDay == 0)
@@ -66,8 +71,12 @@ namespace cSharpWinForm
 			newMonth = month;
 			newDay = day;
 
-			skipDay -= (checker.daysOfMonth(year, month) - day);
-			newMonth = newMonth + 1;
+			if (skipDay > (checker.daysOfMonth(year, month) - day))
+			{
+				skipDay -= (checker.daysOfMonth(year, month) - day);
+				newDay = 0;
+				newMonth = newMonth + 1;
+			}
 			if (month > 12)
 			{
 				newMonth = 1;
@@ -97,7 +106,14 @@ namespace cSharpWinForm
 			}
 			else
 			{
-				newDay = skipDay;
+                if (newDay != 0) 
+				{
+					newDay += skipDay;
+				}
+                else
+				{
+					newDay = skipDay;
+				}
 			}
 
 

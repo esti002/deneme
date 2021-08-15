@@ -12,6 +12,7 @@ namespace cSharpWinForm
 {
     public partial class Form1 : Form
     {
+
         int pageNumber = 0;
         public Form1()
         {
@@ -42,6 +43,7 @@ namespace cSharpWinForm
 
         private void dateProcessButton_Click(object sender, EventArgs e)
         {
+            
             if (pageNumber != 1)
             {
                 hider(pageNumber);
@@ -79,6 +81,11 @@ namespace cSharpWinForm
             }
             pageNumber = 2;
             aboutPage1.Show();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }
