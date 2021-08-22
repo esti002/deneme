@@ -17,5 +17,12 @@ C:\Users\Mehmet ESTİ\Source\Repos\cSharpWinForm\cSharpWinForm\obj\Debug\netcore
 C:\Users\Mehmet ESTİ\Source\Repos\cSharpWinForm\cSharpWinForm\obj\Debug\netcoreapp3.1\cSharpWinForm.Properties.Resources.resources
 C:\Users\Mehmet ESTİ\Source\Repos\cSharpWinForm\cSharpWinForm\obj\Debug\netcoreapp3.1\cSharpWinForm.dateProcess.resources
 C:\Users\Mehmet ESTİ\Source\Repos\cSharpWinForm\cSharpWinForm\obj\Debug\netcoreapp3.1\cSharpWinForm.aboutPage.resources
-C:\Users\Mehmet ESTİ\Source\Repos\cSharpWinForm\cSharpWinForm\obj\Debug\netcoreapp3.1\cSharpWinForm.csproj.AssemblyReference.cache
 C:\Users\Mehmet ESTİ\Source\Repos\cSharpWinForm\cSharpWinForm\obj\Debug\netcoreapp3.1\cSharpWinForm.shopRegistration.resources
+C:\Users\Mehmet ESTİ\Source\Repos\cSharpWinForm\cSharpWinForm\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
+C:\Users\Mehmet ESTİ\Source\Repos\cSharpWinForm\cSharpWinForm\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+C:\Users\Mehmet ESTİ\Source\Repos\cSharpWinForm\cSharpWinForm\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+C:\Users\Mehmet ESTİ\Source\Repos\cSharpWinForm\cSharpWinForm\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+C:\Users\Mehmet ESTİ\Source\Repos\cSharpWinForm\cSharpWinForm\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\Mehmet ESTİ\Source\Repos\cSharpWinForm\cSharpWinForm\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\Mehmet ESTİ\Source\Repos\cSharpWinForm\cSharpWinForm\obj\Debug\netcoreapp3.1\cSharpWinForm.csproj.CopyComplete
+C:\Users\Mehmet ESTİ\Source\Repos\cSharpWinForm\cSharpWinForm\obj\Debug\netcoreapp3.1\cSharpWinForm.csproj.AssemblyReference.cache

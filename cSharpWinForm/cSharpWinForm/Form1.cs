@@ -69,6 +69,11 @@ namespace cSharpWinForm
                     aboutPage1.Hide();
                     aboutButton.BackColor = System.Drawing.Color.Transparent;
                     break;
+                case 3:
+                    shopRegistration1.Hide();
+                    marketButton.BackColor = System.Drawing.Color.Transparent;
+                    break;
+
             }
         }
 
@@ -85,7 +90,13 @@ namespace cSharpWinForm
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-
+            if (pageNumber != 3)
+            {
+                hider(pageNumber);
+                marketButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            }
+            pageNumber = 3;
+            shopRegistration1.Show();
         }
     }
 }
