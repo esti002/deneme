@@ -1,0 +1,19 @@
+C:\Users\Mehmet ESTİ\Source\Repos\excel deneme\excel deneme\bin\Debug\netcoreapp3.1\excel deneme.exe
+C:\Users\Mehmet ESTİ\Source\Repos\excel deneme\excel deneme\bin\Debug\netcoreapp3.1\excel deneme.deps.json
+C:\Users\Mehmet ESTİ\Source\Repos\excel deneme\excel deneme\bin\Debug\netcoreapp3.1\excel deneme.runtimeconfig.json
+C:\Users\Mehmet ESTİ\Source\Repos\excel deneme\excel deneme\bin\Debug\netcoreapp3.1\excel deneme.runtimeconfig.dev.json
+C:\Users\Mehmet ESTİ\Source\Repos\excel deneme\excel deneme\bin\Debug\netcoreapp3.1\excel deneme.dll
+C:\Users\Mehmet ESTİ\Source\Repos\excel deneme\excel deneme\bin\Debug\netcoreapp3.1\excel deneme.pdb
+C:\Users\Mehmet ESTİ\Source\Repos\excel deneme\excel deneme\obj\Debug\netcoreapp3.1\excel deneme.csproj.AssemblyReference.cache
+C:\Users\Mehmet ESTİ\Source\Repos\excel deneme\excel deneme\obj\Debug\netcoreapp3.1\excel_deneme.Form1.resources
+C:\Users\Mehmet ESTİ\Source\Repos\excel deneme\excel deneme\obj\Debug\netcoreapp3.1\excel deneme.csproj.GenerateResource.cache
+C:\Users\Mehmet ESTİ\Source\Repos\excel deneme\excel deneme\obj\Debug\netcoreapp3.1\excel deneme.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Mehmet ESTİ\Source\Repos\excel deneme\excel deneme\obj\Debug\netcoreapp3.1\excel deneme.AssemblyInfoInputs.cache
+C:\Users\Mehmet ESTİ\Source\Repos\excel deneme\excel deneme\obj\Debug\netcoreapp3.1\excel deneme.AssemblyInfo.cs
+C:\Users\Mehmet ESTİ\Source\Repos\excel deneme\excel deneme\obj\Debug\netcoreapp3.1\excel deneme.csproj.CoreCompileInputs.cache
+C:\Users\Mehmet ESTİ\Source\Repos\excel deneme\excel deneme\obj\Debug\netcoreapp3.1\excel deneme.dll
+C:\Users\Mehmet ESTİ\Source\Repos\excel deneme\excel deneme\obj\Debug\netcoreapp3.1\excel deneme.pdb
+C:\Users\Mehmet ESTİ\Source\Repos\excel deneme\excel deneme\obj\Debug\netcoreapp3.1\excel deneme.genruntimeconfig.cache
+C:\Users\Mehmet ESTİ\Source\Repos\excel deneme\excel deneme\bin\Debug\netcoreapp3.1\Interop.Microsoft.Office.Interop.Excel.dll
+C:\Users\Mehmet ESTİ\Source\Repos\excel deneme\excel deneme\obj\Debug\netcoreapp3.1\Interop.Microsoft.Office.Interop.Excel.dll
+C:\Users\Mehmet ESTİ\Source\Repos\excel deneme\excel deneme\obj\Debug\netcoreapp3.1\excel deneme.csproj.ResolveComReference.cache
