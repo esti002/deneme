@@ -17,5 +17,3 @@ ULKE SECIM SONUCLARI =>  https://ubenzer.com/wp-content/uploads/2007/12/algo-ode
 
 SUPER MARKET SIMULASYONU => https://ubenzer.com/wp-content/uploads/2008/04/odev2.pdf
 
-YAZILAN KODLAR .cpp UZANTILI DOSYALARIN ICERISINDEDIR...
-
